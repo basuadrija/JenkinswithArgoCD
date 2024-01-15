@@ -38,6 +38,22 @@ pipeline {
             }
         }
 
+        stage('Stage Artifacts to Jfrog') {
+                steps {
+                    script {
+                        def server = Artifactory.server 'my-jfrog2' 
+                        def uploadSpec = """{   
+                                        "files": [{
+                                        "pattern": "/var/lib/jenkins/workspace/jenkinsautomation/java-argocd-sonarqube/ci/target/demo-0.0.1-SNAPSHOT.war",
+                                        "target": "my-jfrog2",
+                                        "recursive": "false" 
+                                         }]
+                                    }"""
+                         server.upload(uploadSpec)
+                    }
+                }
+        }
+
     //    stage ('Build docker image') {
 
     //     steps {  
