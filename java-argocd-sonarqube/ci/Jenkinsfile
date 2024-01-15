@@ -33,7 +33,7 @@ pipeline {
 
                 withCredentials([string(credentialsId: 'sonarqubewithjenkins', variable: 'SONAR_AUTH_TOKEN')]) {
 
-                    sh 'java-argocd-sonarqube/ci && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                    sh 'cd java-argocd-sonarqube/ci && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                 }
             }
         }
