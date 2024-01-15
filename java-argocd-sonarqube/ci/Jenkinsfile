@@ -43,7 +43,7 @@ pipeline {
         stage('Stage Artifacts to Jfrog') {
                 steps {
                     script {
-                        sh 'jf rt upload --url http://52.66.248.165:8082/artifactory/  --access-token ${ARTIFACTORY_ACCESS_TOKEN}  target/demo-0.0.1-SNAPSHOT.war example-repo-local/'
+                        sh 'jfrog rt upload --url http://52.66.248.165:8082/artifactory/  --access-token ${ARTIFACTORY_ACCESS_TOKEN}  target/demo-0.0.1-SNAPSHOT.war example-repo-local/'
                         // def server = Artifactory.server 'my-jfrog2' 
                         // def uploadSpec = """{   
                         //                 "files": [{
